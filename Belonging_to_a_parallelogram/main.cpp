@@ -9,6 +9,21 @@ To run this program, paste into the .replit file this text:
 And click the run button
 */
 
+class Point{
+public:
+	double x;
+	double y;
+};
+
+class Line{
+public:
+	Point p1,p2;
+private:
+	double getK(){
+		if(p1.x - p2.x)
+	}
+}
+
 int main(){
 	cout<<"Hello world!";
 }

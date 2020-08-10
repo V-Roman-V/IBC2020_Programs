@@ -11,8 +11,8 @@ And click the run button
 
 class Point{
 public:
-	int x;
-	int y;
+	double x;
+	double y;
 };
 
 double dist(Point a, Point b){

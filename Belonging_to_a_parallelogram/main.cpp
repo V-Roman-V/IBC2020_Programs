@@ -24,11 +24,14 @@ public:
 	int isOn(Point p){
 		if(abs(p1.x - p2.x) < EPS) // vertical
 			return ((p1.x<p.x)?1:(p1.x==p.x)?2:0);
-		// cout<<getK()<<" "<<getB()<<" "<<((getK()*p.x + getB()) > p.y)<<endl;
-		if(getK()*p.x + getB() == p.y) return 2;
+		// cout<<getK()<<" "<<getB()<<" "<<((getK()*p.x + getB()) <= p.y)<<endl;
+		if(getK()*p.x + getB() == p.y && into(p) ) return 2;
 		return  (((getK()*p.x + getB()) < p.y)?1:0);
 	}
 private:
+	bool into(Point p){
+		return (min(p1.x,p2.x) <= p.x && p.x <= max(p1.x,p2.x) && min(p1.y,p2.y) <= p.y && p.y <= max(p1.y,p2.y));
+	}
 	double getK(){
 		if(abs(p1.x - p2.x) < EPS) // protection
 			return 0;
@@ -60,7 +63,7 @@ bool Parallelogram::isInto(Point p){
 	loc+=to_string(l3.isOn(p));
 	loc+=to_string(l4.isOn(p));
 	loc+=loc;
-	cout<<loc<<endl;
+	// cout<<loc<<endl;
 	if(loc.rfind("2") != std::string::npos) return true;
 	return (loc.rfind("1100")!=std::string::npos);
 }

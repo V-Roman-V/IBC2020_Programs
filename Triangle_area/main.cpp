@@ -1,11 +1,18 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+/*
+To run this program, paste into the .replit file this text:
+	
+	run = "clang++-7 -pthread -std=c++17 -o Triangle_area/main Triangle_area/main.cpp \n ./Triangle_area/main"
+
+And click the run button
+*/
 
 class Point{
 public:
-	int x;
-	int y;
+	double x;
+	double y;
 };
 
 double dist(Point a, Point b){

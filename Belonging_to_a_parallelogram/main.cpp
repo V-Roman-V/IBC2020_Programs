@@ -23,8 +23,7 @@ public:
 	void setLine(Point P1, Point P2){p1=P1;p2=P2;}
 	int isOn(Point p){
 		if(abs(p1.x - p2.x) < EPS) // vertical
-			return ((p1.x<p.x)?1:(p1.x==p.x)?2:0);
-		// cout<<getK()<<" "<<getB()<<" "<<((getK()*p.x + getB()) <= p.y)<<endl;
+			return ((p1.x<p.x)?1:(p1.x==p.x && into(p))?2:0);
 		if(getK()*p.x + getB() == p.y && into(p) ) return 2;
 		return  (((getK()*p.x + getB()) < p.y)?1:0);
 	}

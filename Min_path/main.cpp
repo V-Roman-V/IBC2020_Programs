@@ -35,7 +35,7 @@ int main(){
 	Q.push(start);
 	while(!Q.empty()){
 		Path cur = Q.front(); Q.pop();
-		cout<<"curr: "; cur.print();
+		// cout<<"curr: "; cur.print();
 		Path next;
 		if(cur.count == N-1){
 			next = cur;
@@ -56,10 +56,10 @@ int main(){
 				next.way += dir[cur.city][next.city];
 				next.visit[next.count]=i;
 				next.count += 1;
-				cout<<"add: "; next.print();
+				// cout<<"add: "; next.print();
 				Q.push(next);
 			}
 	}
-	cout<<minPath;
+	cout<<"Min Path is "<<minPath;
 	return 0;
 }

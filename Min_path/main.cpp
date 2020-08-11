@@ -10,6 +10,22 @@ To run this program, paste into the .replit file this text:
 
 And click the run button
 */
+/*
+Example:
+
+7
+0 5 1 1 5 4 5
+5 0 9 4 8 6 1
+1 9 0 10 5 2 2
+1 4 10 0 5 2 9
+5 8 5 5 0 6 3
+4 6 2 2 6 0 7
+5 1 2 9 3 7 0
+
+Min Path length: 18 way: 253164
+*/
+
+
 int N;
 
 class Path{
@@ -20,7 +36,7 @@ public:
 	int way;
 	int count;
 	vector<int> visit;
-	void print() {cout<<"city: "<<city<<" way: "<<way<<" visit: ";for(int i:visit)cout<<i;cout<<endl;}
+	void print() {cout<<"Path length: "<<way<<" way: ";for(int i:visit)cout<<i;cout<<endl;}
 };
 
 int main(){
@@ -30,7 +46,7 @@ int main(){
 		for(int j=0;j<N;j++)
 			cin>>dir[i][j];
 	Path start(0,0,0);
-	int minPath = -1;
+	Path minPath(0,-1,0);
 	queue<Path> Q;
 	Q.push(start);
 	while(!Q.empty()){
@@ -41,9 +57,9 @@ int main(){
 			next = cur;
 			next.city = 0;
 			next.way += dir[cur.city][next.city];
-			cout<<"fin: "; next.print();
-			if((next.way < minPath) || minPath==-1)
-				minPath=next.way;
+			// cout<<"fin: "; next.print();
+			if((next.way < minPath.way) || minPath.way==-1)
+				minPath=next;
 			continue;
 		}
 		vector<bool> to(N,true);
@@ -60,6 +76,6 @@ int main(){
 				Q.push(next);
 			}
 	}
-	cout<<"Min Path is "<<minPath;
+	cout<<"Min ";minPath.print();
 	return 0;
 }

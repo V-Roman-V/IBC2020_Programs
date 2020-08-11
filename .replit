@@ -1,1 +1,1 @@
-	run = "clang++-7 -pthread -std=c++17 -o Authentication_form/main Authentication_form/main.cpp \n ./Authentication_form/main"
+	run = "clang++-7 -pthread -std=c++17 -o Min_path/main Min_path/main.cpp \n ./Min_path/main"

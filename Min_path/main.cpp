@@ -14,12 +14,13 @@ int N;
 
 class Path{
 public:
-	Path();
-	Path(int c, int w, int cnt){city=c;way=w;count=cnt; visit.resize(N,0);}
+	Path(){;}
+	Path(int c, int w, int cnt){city=c;way=w;count=cnt; visit.resize(N-1,0);}
 	int city;
 	int way;
 	int count;
 	vector<int> visit;
+	void print() {cout<<"city: "<<city<<" way: "<<way<<" visit: ";for(int i:visit)cout<<i;cout<<endl;}
 };
 
 int main(){
@@ -28,16 +29,19 @@ int main(){
 	for(int i=0;i<N;i++)
 		for(int j=0;j<N;j++)
 			cin>>dir[i][j];
-	Path start(0,0,1);
+	Path start(0,0,0);
 	int minPath = -1;
 	queue<Path> Q;
 	Q.push(start);
 	while(!Q.empty()){
 		Path cur = Q.front(); Q.pop();
+		cout<<"curr: "; cur.print();
 		Path next;
-		if(cur.count == N){
+		if(cur.count == N-1){
+			next = cur;
 			next.city = 0;
 			next.way += dir[cur.city][next.city];
+			cout<<"fin: "; next.print();
 			if((next.way < minPath) || minPath==-1)
 				minPath=next.way;
 			continue;
@@ -47,10 +51,12 @@ int main(){
 			to[cur.visit[i]] = false;
 		for(int i=0;i<N;i++)
 			if(to[i]){
+				next = cur;
 				next.city = i;
 				next.way += dir[cur.city][next.city];
 				next.visit[next.count]=i;
-				next.count++;
+				next.count += 1;
+				cout<<"add: "; next.print();
 				Q.push(next);
 			}
 	}
